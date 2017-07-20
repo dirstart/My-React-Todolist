@@ -1,16 +1,30 @@
-import React, {
-	Component
-} from 'react';
-
-import TodoInput from './TodoInput';
+import React from 'react';
 import TodoList from './TodoList';
+import TodoInput from './TodoInput';
 
-class TodoApp extends Component {
+class TodoApp extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			contents: []
 		}
+	}
+	componentWillMount() {
+		this._loadLocalStorage();
+	}
+	_loadLocalStorage() {
+		let contents = localStorage.getItem('user_contents');
+		contents = JSON.parse(contents);
+		this.setState({
+			contents: contents
+		})
+	}
+	_saveLocalStorage() {
+		let {
+			contents
+		} = this.state;
+		contents = JSON.stringify(contents);
+		localStorage.setItem('user_contents', contents);
 	}
 	handleSubmit(content) {
 		const {
@@ -19,20 +33,22 @@ class TodoApp extends Component {
 		contents.push(content);
 		this.setState({
 			contents: contents
-		});
+		}, this._saveLocalStorage());
 	}
-	handleDeleteList(index) {
+	handleDelete(index) {
 		const {
 			contents
 		} = this.state;
 		contents.splice(index, 1);
 		this.setState({
-			contents
+			contents: contents
+		}, () => {
+			this._saveLocalStorage();
 		})
 	}
 	render() {
 		return (<div className="app-all-wrapper">
-			<TodoList contents={this.state.contents} onDeleteList={this.handleDeleteList.bind(this)}/>
+			<TodoList contents={this.state.contents} onHandleDelete={this.handleDelete.bind(this)} />
 			<TodoInput onSubmit={this.handleSubmit.bind(this)}/>
 		</div>)
 	}

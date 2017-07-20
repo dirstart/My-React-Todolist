@@ -1,22 +1,29 @@
-import React, {
-	Component
-} from 'react';
-import Todo from './Todo';
-
-class TodoList extends Component {
+import React from 'react';
+import TodoContent from './TodoContent';
+import PropTypes from 'prop-types';
+class TodoList extends React.Component {
+	static PropTypes = {
+		contents: PropTypes.array,
+		onHandleDelete: PropTypes.func
+	}
 	static defaultProps = {
 		contents: []
 	}
-	handleDeleteList(index) {
-		if (this.props.onDeleteList) {
-			this.props.onDeleteList(index);
+	handleDelete(index) {
+		if (this.props.onHandleDelete) {
+			this.props.onHandleDelete(index);
+		} else {
+			console.log("TodoList 没有onHandleDelete");
 		}
 	}
 	render() {
+		const {
+			contents
+		} = this.props;
 		return (<div className="list-all-wrapper">
-			{this.props.contents.map((content,i)=>{
-				return <Todo key={i} index={i} content={content} onDeleteList={this.handleDeleteList.bind(this)} />
-			})}
+			{contents.map((content,i)=>{ return <TodoContent key={i} index={i}
+				onHandleDelete={this.handleDelete.bind(this)}
+				content={content} />})}
 		</div>)
 	}
 }

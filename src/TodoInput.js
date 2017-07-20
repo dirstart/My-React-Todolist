@@ -1,10 +1,7 @@
-import React, {
-	Component
-} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-
-class TodoInput extends Component {
-	static propTypes = {
+class TodoInput extends React.Component {
+	static propTyps = {
 		onSubmit: PropTypes.func
 	}
 	constructor() {
@@ -13,38 +10,45 @@ class TodoInput extends Component {
 			content: ''
 		}
 	}
-
-	componentDidMount() {
-		this.input.focus();
-	}
-	onSubmit() {
+	handleClick() {
+		if (this.state.content === '') {
+			console.log("没有任务");
+			return;
+		}
+		//这里应该采用正则表达式来解决
 		if (this.props.onSubmit) {
-			this.props.onSubmit({
-				content: this.state.content
-			})
-		};
+			this.props.onSubmit(this.state.content)
+		}
 		this.setState({
 			content: ''
 		})
 	}
-	handleInputChange(event) {
+	handleChange(event) {
 		this.setState({
 			content: event.target.value
-		})
+		});
 	}
 	handleKeyDownEnter(event) {
+		event.stopPropagation();
 		if (event.key === 'Enter') {
-			event.stopPropagation();
-			this.onSubmit();
+			this.handleClick();
+		} else {
+			return;
 		}
 	}
+	componentDidMount() {
+		this.input.focus();
+	}
 	render() {
-		return (<div className="input-all-wrapper" 	onKeyDown={this.handleKeyDownEnter.bind(this)}>
-			<input className="input-input" placeholder="今日计划" value={this.state.content} 
-				onChange={this.handleInputChange.bind(this)}
-				ref={(input)=>{this.input=input} } />
-			<button className="input-button" onClick={this.onSubmit.bind(this)}>Add</button>
-		</div>)
+		return (<div className="input-all-wrapper" onKeyDown={this.handleKeyDownEnter.bind(this)}>
+				<input className="input-input" onChange={this.handleChange.bind(this)} 
+				value={this.state.content} placeholder="今日计划"
+				ref={(input)=>{this.input=input}}/>
+				<button className="input-button"
+				onClick={this.handleClick.bind(this)}
+				>Add</button>
+
+			</div>)
 	}
 }
 

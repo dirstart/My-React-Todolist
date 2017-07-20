@@ -16,7 +16,7 @@ class TodoContent extends React.Component {
 		}
 	}
 	render() {
-		return (<div className="list-content-wrapper">
+		return (<div className="list-content-wrapper" >
 			<div className="list-content">{this.props.content}</div>
 			<span className="list-delete" onClick={this.HandleDelete.bind(this)}
 			>删除</span>

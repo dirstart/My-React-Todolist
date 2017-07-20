@@ -50,9 +50,11 @@ class TodoApp extends React.Component {
 			this._saveLocalStorage();
 		})
 	}
+
 	render() {
 		return (<div className="app-all-wrapper">
-			<TodoList contents={this.state.contents} onHandleDelete={this.handleDelete.bind(this)} />
+			<TodoList contents={this.state.contents} onHandleDelete={this.handleDelete.bind(this)}
+			/>
 			<TodoInput onSubmit={this.handleSubmit.bind(this)}/>
 		</div>)
 	}

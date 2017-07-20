@@ -14,10 +14,12 @@ class TodoApp extends React.Component {
 	}
 	_loadLocalStorage() {
 		let contents = localStorage.getItem('user_contents');
-		contents = JSON.parse(contents);
-		this.setState({
-			contents: contents
-		})
+		if (contents) {
+			contents = JSON.parse(contents);
+			this.setState({
+				contents: contents
+			})
+		}
 	}
 	_saveLocalStorage() {
 		let {
@@ -30,6 +32,8 @@ class TodoApp extends React.Component {
 		const {
 			contents
 		} = this.state;
+		console.log(contents);
+		console.log(content);
 		contents.push(content);
 		this.setState({
 			contents: contents

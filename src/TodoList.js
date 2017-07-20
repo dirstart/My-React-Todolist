@@ -22,8 +22,8 @@ class TodoList extends React.Component {
 		} = this.props;
 		return (<div className="list-all-wrapper">
 			{contents.map((content,i)=>{ return <TodoContent key={i} index={i}
-				onHandleDelete={this.handleDelete.bind(this)}
-				content={content} />})}
+			onHandleDelete={this.handleDelete.bind(this)}
+			content={content} />})}
 		</div>)
 	}
 }

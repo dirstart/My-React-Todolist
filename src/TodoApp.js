@@ -28,13 +28,12 @@ class TodoApp extends React.Component {
 		contents = JSON.stringify(contents);
 		localStorage.setItem('user_contents', contents);
 	}
-	handleSubmit(content) {
+	handleSubmit(obj) {
 		const {
 			contents
 		} = this.state;
-		console.log(contents);
-		console.log(content);
-		contents.push(content);
+		contents.push(obj);
+		console.log(obj);
 		this.setState({
 			contents: contents
 		}, this._saveLocalStorage());
@@ -43,11 +42,13 @@ class TodoApp extends React.Component {
 		const {
 			contents
 		} = this.state;
-		contents.splice(index, 1);
+		contents[index].flag = false;
+		console.log(contents[index].content + "变false");
 		this.setState({
 			contents: contents
 		}, () => {
 			this._saveLocalStorage();
+			console.log(contents);
 		})
 	}
 

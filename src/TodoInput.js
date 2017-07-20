@@ -7,7 +7,8 @@ class TodoInput extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			content: ''
+			content: '',
+			flag: true
 		}
 	}
 	handleClick() {
@@ -17,7 +18,10 @@ class TodoInput extends React.Component {
 		}
 		//这里应该采用正则表达式来解决
 		if (this.props.onSubmit) {
-			this.props.onSubmit(this.state.content)
+			this.props.onSubmit({
+				content: this.state.content,
+				flag: this.state.flag
+			})
 		}
 		this.setState({
 			content: ''

@@ -20,10 +20,22 @@ class TodoList extends React.Component {
 		const {
 			contents
 		} = this.props;
+		let isTrue = [];
+		let key = 0;
+		for (let obj of contents) {
+			obj.key = key;
+			++key;
+			if (obj.flag === true) {
+				isTrue.push(obj);
+			}
+		}
+
 		return (<div className="list-all-wrapper">
-			{contents.map((content,i)=>{ return <TodoContent key={i} index={i}
-			onHandleDelete={this.handleDelete.bind(this)}
-			content={content} />})}
+		{
+			isTrue.map((obj,i)=>{
+				return <TodoContent  content={obj.content} key={i} index={obj.key} onHandleDelete={this.handleDelete.bind(this)}/>
+			})
+		}
 		</div>)
 	}
 }

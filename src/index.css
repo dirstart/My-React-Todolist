@@ -1,0 +1,99 @@
+body,div{
+	margin: 0;
+	padding: 0;
+}
+input,button{
+	outline: none;
+}
+.app-all-wrapper{
+	margin:10px auto;
+	width:490px;
+	border:1px solid #bfbfbf;
+	border-radius: 8px;
+	padding: 10px;
+}
+
+.list-all-wrapper{
+	margin: 0 auto;
+	margin-bottom: 10px;
+	width: 400px;
+	padding: 5px;
+	border: 1px solid #112faf;
+	border-radius: 8px;
+}
+.input-all-wrapper{
+	margin: 0px auto;
+	width: 400px;
+	padding: 5px;
+	border:1px solid #aaa;
+	border-radius: 8px;
+}
+
+.input-button{
+	width: 90px;
+	height: 40px;
+	line-height: 20px;
+	vertical-align: middle;
+	border: none;
+	border-radius:5px;
+	background: #1151b1;
+	margin-left: 5px;
+}
+.input-button:hover{
+	background: #231244;
+	color:white;
+}
+.input-input{
+	width: 300px;
+	height: 40px;
+	border: none;
+	background: #bfbfbf;
+	border-radius: 8px;
+	line-height: 20px;
+	vertical-align: middle;
+	text-indent: 2em;
+}
+.input-input:focus{
+
+}
+
+.list-content-wrapper{
+	height: 40px;
+	position: relative;
+	margin-bottom:8px;
+}
+.list-content{
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	background: #b3f16f;
+	border-radius: 8px;
+	line-height: 40px;
+	text-indent: 2em;
+	vertical-align: middle;
+}
+.list-delete{
+	opacity: 0;
+	position:absolute;	
+	top: 50%;
+	margin-top: -10px;
+	right: 5px;
+	width: 40px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: 微软雅黑;
+	font-size: 12px;
+	cursor: pointer;
+	background: #f1112f1;
+	border-radius: 5px;
+}
+
+.list-content-wrapper:hover .list-delete{
+	opacity: 0.8;
+	width: 50px;
+	background: #f32322;
+	color:#fff;
+	transition:all ease 0.5s;
+}

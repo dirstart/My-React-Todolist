@@ -151,12 +151,12 @@ input,button{
 	font-family:Tahoma;
 	font-size: 12px;
 	border-radius: 8px;
-	animation:kakushi 3s;
+	animation:kakushi 2s;
 }
 @keyframes kakushi{
 	0%{
 		opacity: 0;
-		height: 0;
+		height: 20px;
 	}	
 	50% {
 		opacity: 1;

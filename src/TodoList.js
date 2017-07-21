@@ -21,10 +21,7 @@ class TodoList extends React.Component {
 			contents
 		} = this.props;
 		let isTrue = [];
-		let key = 0;
 		for (let obj of contents) {
-			obj.key = key;
-			++key;
 			if (obj.flag === true) {
 				isTrue.push(obj);
 			}
@@ -33,7 +30,7 @@ class TodoList extends React.Component {
 		return (<div className="list-all-wrapper">
 		{
 			isTrue.map((obj,i)=>{
-				return <TodoContent  content={obj.content} key={i} index={obj.key} 
+				return <TodoContent  content={obj.content} key={i} index={obj.index} 
 				onHandleDelete={this.handleDelete.bind(this)}/>
 			})
 		}

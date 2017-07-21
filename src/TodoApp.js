@@ -33,7 +33,8 @@ class TodoApp extends React.Component {
 			contents
 		} = this.state;
 		contents.push(obj);
-		console.log(obj);
+		contents.map((obj_origin, i) => obj_origin.index = i)
+		console.log(contents);
 		this.setState({
 			contents: contents
 		}, this._saveLocalStorage());
@@ -53,8 +54,18 @@ class TodoApp extends React.Component {
 	}
 
 	render() {
+		const {
+			contents
+		} = this.state;
+		let need_to_do = [];
+		for (let obj of contents) {
+			if (obj.flag === true) {
+				need_to_do.push(obj);
+			}
+		}
+
 		return (<div className="app-all-wrapper">
-			<TodoList contents={this.state.contents} onHandleDelete={this.handleDelete.bind(this)}
+			<TodoList contents={need_to_do} onHandleDelete={this.handleDelete.bind(this)}
 			/>
 			<TodoInput onSubmit={this.handleSubmit.bind(this)}/>
 		</div>)

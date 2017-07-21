@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 class TodoInput extends React.Component {
 	static propTyps = {
-		onSubmit: PropTypes.func
+		onSubmit: PropTypes.func,
+		onClearAll: PropTypes.func
 	}
 	constructor() {
 		super();
@@ -40,6 +41,11 @@ class TodoInput extends React.Component {
 			return;
 		}
 	}
+	handleClearAll() {
+		if (this.props.onClearAll) {
+			this.props.onClearAll();
+		}
+	}
 	componentDidMount() {
 		this.input.focus();
 	}
@@ -48,9 +54,9 @@ class TodoInput extends React.Component {
 				<input className="input-input" onChange={this.handleChange.bind(this)} 
 				value={this.state.content} placeholder="今日计划"
 				ref={(input)=>{this.input=input}}/>
-				<button className="input-button"
-				onClick={this.handleClick.bind(this)}
+				<button className="input-send" onClick={this.handleClick.bind(this)}
 				>Add</button>
+				<button className="input-clear" onClick={this.handleClearAll.bind(this)}>Clear</button>
 
 			</div>)
 	}

@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoList from './TodoList';
+import DustbinList from './DustbinList';
 import TodoInput from './TodoInput';
 
 class TodoApp extends React.Component {
@@ -39,6 +40,18 @@ class TodoApp extends React.Component {
 			contents: contents
 		}, this._saveLocalStorage());
 	}
+	handleRestore(index) {
+		const {
+			contents
+		} = this.state;
+		contents[index].flag = true;
+		console.log(contents[index].content + "变成了true");
+		this.setState({
+			contents: contents
+		}, () => {
+			this._saveLocalStorage();
+		})
+	}
 	handleDelete(index) {
 		const {
 			contents
@@ -52,22 +65,48 @@ class TodoApp extends React.Component {
 			console.log(contents);
 		})
 	}
+	handleClearAll() {
+		const {
+			contents
+		} = this.state;
+		const new_contents = [];
+		let i = 0;
+		for (let obj of contents) {
+			if (!!obj.flag) {
+				console.log(obj.flag);
+				obj.index = i;
+				++i;
+				new_contents.push(obj);
+			}
+		}
+		console.log(new_contents);
+		this.setState({
+			contents: new_contents
+		}, () => {
+			this._saveLocalStorage();
+			console.log(contents);
+		})
+	}
 
 	render() {
 		const {
 			contents
 		} = this.state;
 		let need_to_do = [];
+		let finish = [];
 		for (let obj of contents) {
 			if (obj.flag === true) {
 				need_to_do.push(obj);
+			} else {
+				finish.push(obj);
 			}
 		}
 
 		return (<div className="app-all-wrapper">
-			<TodoList contents={need_to_do} onHandleDelete={this.handleDelete.bind(this)}
-			/>
-			<TodoInput onSubmit={this.handleSubmit.bind(this)}/>
+			<TodoList contents={need_to_do} onHandleDelete={this.handleDelete.bind(this)}/>
+			<TodoInput onSubmit={this.handleSubmit.bind(this)} 
+				onClearAll={this.handleClearAll.bind(this)}/>
+			<DustbinList contents={finish} onHandleRestore={this.handleRestore.bind(this)}/>
 		</div>)
 	}
 }

@@ -13,7 +13,7 @@ input,button{
 	padding: 10px;
 }
 
-.list-all-wrapper{
+.list-all-wrapper,.dustbin-all-wrapper{
 	margin: 0 auto;
 	margin-bottom: 10px;
 	width: 400px;
@@ -21,30 +21,52 @@ input,button{
 	border: 1px solid #112faf;
 	border-radius: 8px;
 }
+.dustbin-all-wrapper{
+	margin-top: 10px;
+	border: 1px solid #234932;
+}
 .input-all-wrapper{
 	margin: 0px auto;
 	width: 400px;
 	padding: 5px;
 	border:1px solid #aaa;
 	border-radius: 8px;
+	overflow: hidden;
 }
 
-.input-button{
+.input-send{
 	width: 90px;
 	height: 40px;
 	line-height: 20px;
 	vertical-align: middle;
 	border: none;
 	border-radius:5px;
-	background: #1151b1;
+	background: #CAEDCA;
 	margin-left: 5px;
+	margin-right: 5px;
+	float: right;
 }
-.input-button:hover{
-	background: #231244;
+.input-send:hover{
+	background: #536B57;
 	color:white;
 }
+.input-clear{
+	width: 90px;
+	height: 40px;
+	line-height: 20px;
+	vertical-align: middle;
+	margin-top: 5px;
+	margin-right: 5px;
+	border-radius: 5px;
+	border: none;
+	float: right;
+}
+.input-clear:hover{
+	background: #fcefac;
+	color: #fff;
+}
 .input-input{
-	width: 300px;
+	width: 260px;
 	height: 40px;
 	border: none;
 	background: #bfbfbf;
@@ -54,15 +76,15 @@ input,button{
 	text-indent: 2em;
 }
 .input-input:focus{
-
+	width: 290px;
+	transition:all 1s ease;
 }
-
-.list-content-wrapper{
+.list-content-wrapper,.dustbin-content-wrapper{
 	height: 40px;
 	position: relative;
 	margin-bottom:8px;
 }
-.list-content{
+.list-content,.dustbin-content{
 	width: 100%;
 	height: 100%;
 	color: #fff;
@@ -72,7 +94,13 @@ input,button{
 	text-indent: 2em;
 	vertical-align: middle;
 }
-.list-delete{
+.dustbin-content{
+	color: #bfbfbf;
+	background: #2f123f;
+	text-decoration: line-through;
+	opacity: 0.6;
+}
+.list-delete,.dustbin-restore{
 	display: block;
 	opacity: 0;
 	position:absolute;	
@@ -90,7 +118,16 @@ input,button{
 	background: #f1112f1;
 	border-radius: 5px;
 }
-
+.dustbin-restore{
+	background:#f3252f;
+}
+.dustbin-content-wrapper:hover .dustbin-restore{
+	opacity: 0.8;
+	width: 50px;
+	background: #7f3e3f;
+	color:#fff;
+	transition:all 1s ease;
+}
 .list-content-wrapper:hover .list-delete{
 	opacity: 0.8;
 	width: 50px;

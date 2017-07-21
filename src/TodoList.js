@@ -33,7 +33,8 @@ class TodoList extends React.Component {
 		return (<div className="list-all-wrapper">
 		{
 			isTrue.map((obj,i)=>{
-				return <TodoContent  content={obj.content} key={i} index={obj.key} onHandleDelete={this.handleDelete.bind(this)}/>
+				return <TodoContent  content={obj.content} key={i} index={obj.key} 
+				onHandleDelete={this.handleDelete.bind(this)}/>
 			})
 		}
 		</div>)

@@ -145,8 +145,28 @@ input,button{
 	width: 400px;
 	height: 30px;
 	line-height: 30px;
-	background: #F3F286;
+	background: #126E71;
+	color: #fff;
 	text-align: center;
-	font-family: 微软雅黑;
+	font-family:Tahoma;
+	font-size: 12px;
 	border-radius: 8px;
+	animation:kakushi 3s;
 }
+@keyframes kakushi{
+	0%{
+		opacity: 0;
+		height: 0;
+	}	
+	50% {
+		opacity: 1;
+		height: 30px;
+	}
+	100%{
+		opacity: 0;
+		height: 0;
+	}
+
+}
+
+

@@ -10,7 +10,7 @@ class TodoInput extends React.Component {
 		this.state = {
 			content: '',
 			flag: true,
-			suspension: true
+			suspension: false
 		}
 	}
 	handleClick() {
@@ -18,6 +18,7 @@ class TodoInput extends React.Component {
 			console.log("没有任务");
 			let t;
 			clearTimeout(t); //清除掉上一次的t
+			// 停止css3animation动画
 			this.setState({
 				suspension: true
 			}, function() {
@@ -25,7 +26,7 @@ class TodoInput extends React.Component {
 					this.setState({
 						suspension: false
 					})
-				}, 5000);
+				}, 2000);
 			})
 			return;
 		}

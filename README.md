@@ -4,6 +4,7 @@
 ### 4.当输入文本过长的一些操作
 ### 5.由本来的{content} => {content,flag} =>  目前想要改为 {content,flag,id} 原因是遇到了Bug，在删除的时候通过给index的flag改成false，之后在map的时候用默认i赋值导致出错
 改进方案==>  改为{content,flag,id},同时分为dustbinList和TodoList两块
+### 6.悬浮弹窗的实现
 
 ### 思考方案，如果我不在TodoList上获取所有数组，而是在todoApp上写我的逻辑，这样也许会更加清楚一点。
 
@@ -20,8 +21,31 @@
 
 ### 有没有一种可以先写一个可重用的css然后再套用的东西？不用多加一个class的那种
 
+### 再做个导出功能哈哈哈
+
 分层思想，感觉自己运气好想到的？哈哈哈。实际上只传content和index给Content组件，旗帜在之前就已经被拆分
 
 
 再加点文艺的东西：
     别人的成功往往是冰山的一脚，因为我们往往看不见人们冰山下的努力。
+
+
+解决的问题:关于这里的弹窗当第二次点击的时候如何使上一次的setTimeout停止(以前只用过clearInterval，这下学到了)
+var t=setTimeout(()=>{},5000);
+clearTimemout(t);
+// 其实和setInterval停下的方法是一样的
+```
+if (this.state.content === '') {
+      console.log("没有任务");
+      this.setState({
+        suspension: true
+      }, function() {
+        setTimeout(() => {
+          this.setState({
+            suspension: false
+          })
+        }, 5000);
+      })
+      return;
+    }
+```

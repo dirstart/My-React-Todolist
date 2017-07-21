@@ -9,12 +9,24 @@ class TodoInput extends React.Component {
 		super();
 		this.state = {
 			content: '',
-			flag: true
+			flag: true,
+			suspension: true
 		}
 	}
 	handleClick() {
 		if (this.state.content === '') {
 			console.log("没有任务");
+			let t;
+			clearTimeout(t); //清除掉上一次的t
+			this.setState({
+				suspension: true
+			}, function() {
+				t = setTimeout(() => {
+					this.setState({
+						suspension: false
+					})
+				}, 5000);
+			})
 			return;
 		}
 		//这里应该采用正则表达式来解决
@@ -57,7 +69,7 @@ class TodoInput extends React.Component {
 				<button className="input-send" onClick={this.handleClick.bind(this)}
 				>Add</button>
 				<button className="input-clear" onClick={this.handleClearAll.bind(this)}>Clear</button>
-
+				{this.state.suspension?(<div className="suspension">请输入内容</div>):null}
 			</div>)
 	}
 }

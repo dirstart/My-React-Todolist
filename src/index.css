@@ -11,6 +11,7 @@ input,button{
 	border:1px solid #bfbfbf;
 	border-radius: 8px;
 	padding: 10px;
+	padding-top: 50px;
 }
 
 .list-all-wrapper,.dustbin-all-wrapper{
@@ -134,4 +135,18 @@ input,button{
 	background: #f32322;
 	color:#fff;
 	transition:all ease 0.5s;
+}
+
+.suspension{
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	margin-left: -200px;
+	width: 400px;
+	height: 30px;
+	line-height: 30px;
+	background: #F3F286;
+	text-align: center;
+	font-family: 微软雅黑;
+	border-radius: 8px;
 }

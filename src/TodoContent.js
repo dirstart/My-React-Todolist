@@ -15,6 +15,9 @@ class TodoContent extends React.Component {
 			console.log("没有onHandleDelete");
 		}
 	}
+	componentWillMount() {
+		console.log("我被调用了");
+	}
 	render() {
 		return (<div className="list-content-wrapper" >
 			<div className="list-content">{this.props.content}</div>

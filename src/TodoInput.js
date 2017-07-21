@@ -67,9 +67,11 @@ class TodoInput extends React.Component {
 				<input className="input-input" onChange={this.handleChange.bind(this)} 
 				value={this.state.content} placeholder="今日计划"
 				ref={(input)=>{this.input=input}}/>
-				<button className="input-send" onClick={this.handleClick.bind(this)}
+				<button className="button-send" onClick={this.handleClick.bind(this)}
 				>Add</button>
-				<button className="input-clear" onClick={this.handleClearAll.bind(this)}>Clear</button>
+				<input className="input-search" placeholder="搜索计划"/>
+				<button className="button-search">Search</button>
+				<button className="button-clear" onClick={this.handleClearAll.bind(this)}>Clear</button>
 				{this.state.suspension?(<div className="suspension">请输入内容</div>):null}
 			</div>)
 	}

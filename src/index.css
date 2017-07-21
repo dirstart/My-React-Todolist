@@ -35,7 +35,7 @@ input,button{
 	overflow: hidden;
 }
 
-.input-send{
+.button-send{
 	width: 90px;
 	height: 40px;
 	line-height: 20px;
@@ -47,11 +47,11 @@ input,button{
 	margin-right: 5px;
 	float: right;
 }
-.input-send:hover{
+.button-send:hover{
 	background: #536B57;
 	color:white;
 }
-.input-clear{
+.button-clear{
 	width: 90px;
 	height: 40px;
 	line-height: 20px;
@@ -62,11 +62,18 @@ input,button{
 	border: none;
 	float: right;
 }
-.input-clear:hover{
+.button-clear:hover{
 	background: #fcefac;
 	color: #fff;
 }
-.input-input{
+.button-search{
+	width: 90px;
+	border: none;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 8px;
+}
+.input-input,.input-search{
 	width: 260px;
 	height: 40px;
 	border: none;
@@ -75,6 +82,11 @@ input,button{
 	line-height: 20px;
 	vertical-align: middle;
 	text-indent: 2em;
+	margin-bottom: 5px;
+}
+.input-search{
+	width: 210px;
+	margin-top: 5px;
 }
 .input-input:focus{
 	width: 290px;
@@ -84,6 +96,17 @@ input,button{
 	height: 40px;
 	position: relative;
 	margin-bottom:8px;
+	animation:listadd 1s;
+}
+@keyframes listadd{
+	0%{
+		height: 20px;
+		opacity: 0;
+	}
+	100%{
+		height: 40px;
+		opacity: 1;
+	}
 }
 .list-content,.dustbin-content{
 	width: 100%;

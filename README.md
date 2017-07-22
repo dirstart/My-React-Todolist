@@ -1,4 +1,5 @@
 # 项目进度
+#### --PS:因前期没有写这个所以已经忘记了部分，果然以后得好好地写readme啊
 
 *  *  *
 ##### 1.完成了增加任务
@@ -7,7 +8,9 @@
 ##### 4.由本来的{content} => {content,flag} =>  目前想要改为 {content,flag,id} 原因是遇到了Bug，在删除的时候通过给index的flag改成false，之后在map的时候用默认i赋值导致出错，改进方案==>  改为{content,flag,id},同时分为dustbinList和TodoList两块
 ##### 5.悬浮弹窗的实现，目前已经实现，利用css动画实现
 ##### 6.input等css动画的改进
-##### 7.完成了todo还原，修改了原来的删除任务，变成已完成状态按clear后才算删除
+##### 7.使用localStorage完成了所有进度的存储
+##### 8.完成了todo还原，修改了原来的删除任务，变成已完成状态按clear后才算删除
+##### 9.已经成功部署在了GitHub上:  https://dirstart.github.io/My-React-Todolist/build/
 
 
 # 当前准备完成
@@ -23,6 +26,7 @@
 ##### 9.再做个导出功能
 ##### 10.再加点文艺的东西配合我的css，如``别人的成功往往是冰山的一脚，因为我们往往看不见人们冰山下的努力。``
 ##### 11.关于防止用户多次Enter(或者是不小心按到了Enter)
+##### 12.部署在github之后才发现初始的界面不好看，准备继续添加CSS
 
 # 过程中遇到的问题
 * * *
@@ -66,6 +70,9 @@ body{
 ```
 不过有了经验，下次还是要用可定制的css写啊，比如用变量控制长度。
 同时发现还需要学习一些关于initial-scale的内容
+##### 10.终于能够成功部署静态网页在github了，发现自己的分支gh-pages没有和master同步
+> 解决方案
+直接在本地`git branch gh-pages` `git push origin gh-pages`即可
 
 
 # 感想

@@ -16,7 +16,7 @@ class TodoContent extends React.Component {
 		}
 	}
 	componentWillMount() {
-		console.log("我被调用了");
+		// console.log("我被调用了");
 	}
 	render() {
 		return (<div className="list-content-wrapper" >

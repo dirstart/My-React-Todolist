@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 class TodoInput extends React.Component {
 	static propTyps = {
 		onSubmit: PropTypes.func,
-		onClearAll: PropTypes.func
+		onClearAll: PropTypes.func,
+		onSearch: PropTypes.func
 	}
 	constructor() {
 		super();
 		this.state = {
 			content: '',
 			flag: true,
-			suspension: false
+			suspension: false,
+			search_key: ''
 		}
 	}
 	handleClick() {
@@ -42,9 +44,18 @@ class TodoInput extends React.Component {
 		})
 	}
 	handleChange(event) {
+		if (event.target.value.length <= 40) {
+			this.setState({
+				content: event.target.value
+			});
+		} else {
+			alert("大于40字");
+		}
+	}
+	handleSearchChange(event) {
 		this.setState({
-			content: event.target.value
-		});
+			search_key: event.target.value
+		})
 	}
 	handleKeyDownEnter(event) {
 		event.stopPropagation();
@@ -59,6 +70,11 @@ class TodoInput extends React.Component {
 			this.props.onClearAll();
 		}
 	}
+	handleSearch() {
+		if (this.props.onSearch) {
+			this.props.onSearch(this.state.search_key);
+		}
+	}
 	componentDidMount() {
 		this.input.focus();
 	}
@@ -69,8 +85,9 @@ class TodoInput extends React.Component {
 				ref={(input)=>{this.input=input}}/>
 				<button className="button-send" onClick={this.handleClick.bind(this)}
 				>Add</button>
-				<input className="input-search" placeholder="搜索计划"/>
-				<button className="button-search">Search</button>
+				<input className="input-search" onChange={this.handleSearchChange.bind(this)} 
+				value={this.state.search_key}	placeholder="搜索计划"/>
+				<button className="button-search" onClick={this.handleSearch.bind(this)}>Search</button>
 				<button className="button-clear" onClick={this.handleClearAll.bind(this)}>Clear</button>
 				{this.state.suspension?(<div className="suspension">请输入内容</div>):null}
 			</div>)

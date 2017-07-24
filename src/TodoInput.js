@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 class TodoInput extends React.Component {
-	static propTyps = {
+	static propTyeps = {
 		onSubmit: PropTypes.func,
 		onClearAll: PropTypes.func,
 		onSearch: PropTypes.func

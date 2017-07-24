@@ -7,6 +7,7 @@ body,div{
 }
 input,button{
 	outline: none;
+	box-sizing: border-box;
 }
 .app-all-wrapper{
 	margin:10px auto;
@@ -71,10 +72,16 @@ input,button{
 }
 .button-search{
 	width: 90px;
-	border: none;
 	height: 40px;
-	line-height: 40px;
+	margin-top: 5px;
+	margin-left: 5px;
+	line-height: 20px;
 	border-radius: 8px;
+	border: none;
+	background: #A3B0C2;
+}
+.button-search:hover{
+	background: #9BfeB0;
 }
 .input-input,.input-search{
 	width: 260px;
@@ -88,7 +95,7 @@ input,button{
 	margin-bottom: 5px;
 }
 .input-search{
-	width: 210px;
+	width: 200px;
 	margin-top: 5px;
 }
 .input-input:focus{
@@ -112,7 +119,7 @@ input,button{
 	}
 }
 .list-content,.dustbin-content{
-	width: 100%;
+	width: 380px;
 	height: 100%;
 	color: #fff;
 	background: #b3f16f;
@@ -120,6 +127,10 @@ input,button{
 	line-height: 40px;
 	text-indent: 2em;
 	vertical-align: middle;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	padding-right: 20px;
 }
 .dustbin-content{
 	color: #bfbfbf;
@@ -164,7 +175,7 @@ input,button{
 }
 
 .suspension{
-	position: absolute;
+	position: fixed;
 	top: 20px;
 	left: 50%;
 	margin-left: -200px;

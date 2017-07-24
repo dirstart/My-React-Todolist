@@ -65,6 +65,9 @@ class TodoApp extends React.Component {
 			console.log(contents);
 		})
 	}
+	handleSearch(search_key) {
+		console.log(search_key);
+	}
 	handleClearAll() {
 		const {
 			contents
@@ -105,7 +108,7 @@ class TodoApp extends React.Component {
 		return (<div className="app-all-wrapper">
 			<TodoList contents={need_to_do} onHandleDelete={this.handleDelete.bind(this)}/>
 			<TodoInput onSubmit={this.handleSubmit.bind(this)} 
-				onClearAll={this.handleClearAll.bind(this)}/>
+				onClearAll={this.handleClearAll.bind(this)} onSearch={this.handleSearch.bind(this)} />
 			<DustbinList contents={finish} onHandleRestore={this.handleRestore.bind(this)}/>
 		</div>)
 	}
